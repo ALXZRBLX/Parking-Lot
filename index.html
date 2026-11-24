@@ -37,7 +37,7 @@
       <li><a href="#introduction">Introduction</a></li>
       <li><a href="#circuit-diagram">Circuit</a></li>
       <li><a href="#environment">Environment</a></li>
-      <li><a href="#bom">BoM</a></li>
+      <li><a href="#bom">Components</a></li>
       <li><a href="#prototype">Prototype</a></li>
       <li><a href="#code">Code</a></li>
       <li><a href="#conclusion">Conclusion</a></li>
@@ -96,76 +96,111 @@
 
   <section id="bom">
     <h2>Bill of Materials (BoM)</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Item</th>
-          <th>Qty</th>
-          <th>Unit Price</th>
-          <th>Subtotal</th>
-          <th>Source</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Arduino Uno Rev3</td>
-          <td>1</td>
-          <td>$27.60</td>
-          <td>$27.60</td>
-          <td><a href="https://store-usa.arduino.cc/products/arduino-uno-rev3">Arduino Store</a></td>
-        </tr>
-        <tr>
-          <td>HC-SR04 Ultrasonic Sensor</td>
-          <td>1</td>
-          <td>$3.95</td>
-          <td>$3.95</td>
-          <td><a href="https://www.adafruit.com/product/3942">Adafruit</a></td>
-        </tr>
-        <tr>
-          <td>Passive Buzzer</td>
-          <td>1</td>
-          <td>$0.95</td>
-          <td>$0.95</td>
-          <td><a href="https://www.sparkfun.com/passive-buzzer-module.html">SparkFun</a></td>
-        </tr>
-        <tr>
-          <td>LEDs (Red, Green)</td>
-          <td>2</td>
-          <td>$0.20</td>
-          <td>$0.60</td>
-          <td>Adafruit</td>
-        </tr>
-        <tr>
-          <td>320 Ω Resistors</td>
-          <td>3</td>
-          <td>$0.03</td>
-          <td>$0.09</td>
-          <td>Adafruit</td>
-        </tr>
-        <tr>
-          <td>Breadboard</td>
-          <td>1</td>
-          <td>$4.95</td>
-          <td>$4.95</td>
-          <td><a href="https://www.adafruit.com/product/64">Adafruit</a></td>
-        </tr>
-        <tr>
-          <td>Jumper Wires</td>
-          <td>1 set</td>
-          <td>$3.50</td>
-          <td>$3.50</td>
-          <td><a href="https://www.sparkfun.com/jumper-wires-standard-7-m-m-30-awg-30-pack.html">SparkFun</a>
-          </td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td colspan="3">Estimated Total</td>
-          <td>$41.64</td>
-          <td>—</td>
-        </tr>
-      </tfoot>
-    </table>
+    <p>The following components are used to build the Arduino-based smart parking system. Sensors detect vehicles and parking-space occupancy, while the Arduino processes their readings and controls the indicators, display, and entrance barrier.</p>
+
+    <div class="bom-table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Component</th>
+            <th>Qty</th>
+            <th>Detailed Description &amp; Circuit Connection</th>
+            <th>Cost (CAD)</th>
+            <th>Supplier / Product</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Arduino Uno</td>
+            <td>1</td>
+            <td><strong>Main controller:</strong> The Arduino Uno is the central microcontroller board of the parking system. It receives signals from the distance sensors and photoresistors, interprets whether parking spaces are occupied, and controls the LEDs, LCD display, and servo-operated barrier. Components connect to its digital and analog pins, with power and ground distributed as needed through the breadboard.</td>
+            <td>$16.99</td>
+            <td><a href="https://store-usa.arduino.cc/products/arduino-uno-rev3" target="_blank" rel="noopener">Arduino Uno Rev3</a></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>LEDs</td>
+            <td>2</td>
+            <td><strong>Visual parking indicators:</strong> LEDs provide a quick visual indication of parking status. One colour (such as green) can indicate an available space, while another (such as red) can indicate an occupied space. Each LED connects to an Arduino digital output through a current-limiting resistor. Its other connection goes to ground, and the Arduino switches the LEDs on or off according to the sensor readings.</td>
+            <td>$0.10</td>
+            <td>3 mm / 5 mm LEDs — <a href="https://www.aliexpress.com/" target="_blank" rel="noopener">AliExpress</a></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Servo Motor (SG90)</td>
+            <td>1</td>
+            <td><strong>Entrance barrier actuator:</strong> The SG90 micro servo moves the model parking-gate arm between open and closed positions. Its control wire connects to an Arduino digital pin capable of servo control; the power and ground wires connect to an appropriate 5 V supply and ground. For reliable operation, a servo may require a separate 5 V supply, with its ground connected to the Arduino ground. The Arduino sends control pulses to set the gate angle.</td>
+            <td>$8.00</td>
+            <td><a href="https://www.joom.com/" target="_blank" rel="noopener">SG90 9G Micro Servo — Joom</a></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Breadboard</td>
+            <td>1</td>
+            <td><strong>Prototyping and connections:</strong> The breadboard allows the circuit to be assembled without soldering. It provides rows and power rails for connecting the Arduino, sensor modules, LEDs, resistors, LCD connections, and jumper wires. The power rails can distribute 5 V and ground, while the connected rows create the circuit paths between components. Check the breadboard's rail layout, as some rails may be split.</td>
+            <td>$5.00</td>
+            <td>Breadboard — <a href="https://www.phoenixent.com/" target="_blank" rel="noopener">Phoenix Enterprises</a></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Jumper Wires</td>
+            <td>~10</td>
+            <td><strong>Electrical connections:</strong> Jumper wires connect component pins to the Arduino and breadboard. They carry power, ground, and signal lines—for example, sensor trigger and echo signals, LED output connections, servo control signals, and the LCD's I²C data and clock lines. Different wire colours can be used to make power, ground, and signal connections easier to identify and troubleshoot.</td>
+            <td>$2.00</td>
+            <td><a href="https://www.digikey.ca/" target="_blank" rel="noopener">Jumper wires — DigiKey</a></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Computer</td>
+            <td>1</td>
+            <td><strong>Programming and development:</strong> A computer is used to write, compile, and upload the Arduino program using the Arduino IDE. It connects to the Arduino Uno through a USB cable, which also commonly supplies power to the board during programming and testing. The computer can additionally be used to monitor serial output while troubleshooting sensor readings and system behaviour.</td>
+            <td>—</td>
+            <td>Existing computer / Arduino IDE</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Ultrasonic Distance Sensors (HC-SR04)</td>
+            <td>2</td>
+            <td><strong>Vehicle and space detection:</strong> Ultrasonic sensors measure the distance to an object by sending a sound pulse and measuring how long its echo takes to return. In the parking system, sensors can be positioned near spaces or the entrance to detect the presence of a vehicle. Each module's VCC and GND connect to power and ground; its TRIG pin connects to an Arduino digital output and ECHO connects to a digital input. The Arduino uses the measured distance to determine occupancy or detect an approaching vehicle. Sensor placement and threshold values need to be tested for the model.</td>
+            <td>$5.00</td>
+            <td>HC-SR04 — <a href="https://www.robocraze.com/" target="_blank" rel="noopener">Robocraze</a></td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>LCD Display (16×2 with I²C)</td>
+            <td>1</td>
+            <td><strong>Parking information display:</strong> The 16×2 LCD displays system information, such as the number of available spaces, occupancy status, or a “PARKING FULL” message. The I²C adapter reduces the number of Arduino pins needed: SDA and SCL connect to the Uno's I²C pins (A4/SDA and A5/SCL on the Uno R3), while VCC and GND connect to power and ground. The Arduino updates the text based on the sensor data and programmed logic.</td>
+            <td>$11.00</td>
+            <td>LCD1602 with PCF8574 I²C — <a href="https://www.joom.com/" target="_blank" rel="noopener">Joom</a></td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>Potentiometer</td>
+            <td>1</td>
+            <td><strong>LCD contrast adjustment:</strong> A potentiometer is an adjustable resistor that can be used to tune the LCD display's contrast so its characters are easier to read. If the LCD module does not already have a suitable onboard contrast adjustment, the potentiometer's outer terminals connect to the appropriate supply and ground, and its centre wiper connects to the LCD contrast input (V0). Confirm the LCD module's wiring and requirements before connecting it; many I²C LCD backpacks already include a contrast trimmer.</td>
+            <td>$1.00</td>
+            <td><a href="https://www.digikey.ca/" target="_blank" rel="noopener">Bourns rotary potentiometer — DigiKey</a></td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>Photoresistors (LDRs)</td>
+            <td>4</td>
+            <td><strong>Parking-space occupancy sensing:</strong> Photoresistors (light-dependent resistors or LDRs) change resistance based on the amount of light falling on them. They can be used as part of a light-based detection setup for individual parking spaces. Each LDR is typically wired with a fixed resistor as a voltage divider, and the divider's output is connected to an Arduino analog input. The Arduino reads the changing voltage and uses a calibrated threshold to determine whether the light level has changed—for example, when a model vehicle blocks light. Ambient lighting and sensor positioning affect reliability, so each sensor should be tested and calibrated.</td>
+            <td>$0.20</td>
+            <td>GL5537 5 mm LDR — <a href="https://www.amazon.ca/" target="_blank" rel="noopener">Amazon.ca</a></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4"><strong>Estimated Total</strong></td>
+            <td><strong>$49.29 CAD</strong></td>
+            <td>Estimated component cost</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
   </section>
 
   <section id="prototype">
